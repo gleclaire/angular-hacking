@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-controller="mainController">
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="container wrapper">
+
+
+    <div ng-view>
+      <div class="row">
+        <div className="col-md-12">
+          <form class="form-inline">
+            <div class=" col-md-8">
+              <input type="text" class="form-control" ng-model="ghUser" placeholder="Github user" style="width: 80%"/>
+              <span>
+                <button type="button" ng-click="searchUser(ghUser)" ng-enable="ghUser.length > 2" class="btn btn-primary">Search Github</button>
+              </span>
+            </div>
+            <p></p>
+          </form>
+        </div>
+
+        <p></p>
+
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-4">
+          <div ng-show="userInfo != null">
+            <div>
+              <h3> User Profile </h3>
+            </div>
+            <div class="table-responsive">
+              <div ng-show="userInfo != null">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr><td><img  ng-src="{{userInfo.avatar_url}}"className="img-rounded img-responsive"/></td></tr>
+                    <tr><td>Type: {{userInfo.type}}</td></tr>
+                    <tr><td>Site Admin : {{userInfo.site_admin}}</td></tr>
+                    <tr><td>Name: {{userInfo.name}}</td></tr>
+                    <tr ng-show="userInfo.company != null"><td>Company: {{userInfo.company}}</td></tr>
+                    <tr ng-show="userInfo.blog != null"><td>Blog: {{userInfo.blog}}</td></tr>
+                    <tr ng-show="userInfo.location != null"><td>Location: {{userInfo.location}}</td></tr>
+                    <tr ng-show="userInfo.email != null"><td>email: {{userInfo.email}}</td></tr>
+                    <tr ng-show="userInfo.hireable != null"><td>Hireable: {{userInfo.hireable}}</td></tr>
+                    <tr ng-show="userInfo.bio != null"><td>Bio: {{userInfo.bio}}</td></tr>
+                    <tr ng-show="userInfo.public_repos != null"><td>Public Repos: {{userInfo.public_repos}}</td></tr>
+                    <tr ng-show="userInfo.public_gists != null"><td>Public_gists: {{userInfo.public_gists}}</td></tr>
+                    <tr ng-show="userInfo.followers != null"><td>Followers: {{userInfo.followers}}</td></tr>
+                    <tr ng-show="userInfo.following != null"><td>Following: {{userInfo.following}}</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div ng-show="userInfo != null">
+            <div>
+              <h3> User Repos </h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <tbody>
+                  <tr ng-repeat="userRepo in userRepos">
+                    <td><a target="_blank" ng-href="{{userRepo.html_url}}">{{userRepo.name}}</a>
+                      <p></p>
+                      <p>{{userRepo.description}}</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div>
+  </div>
+
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
