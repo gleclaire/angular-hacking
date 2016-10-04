@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <header name = "Access-Control-Allow-Origin" value = "*" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>angular-jwplayer</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div ng-view ng-controller="mainController">
+    <div class="container">
+      <h1>{{ name1 }}</h1>
+      <div class="row">
+        <div class="col-md-5" >
+          <jwplayer ng-src="{{ file1 }}"
+                    player-options="options1"
+                    player-id="jwplayer">
+          </jwplayer>
+        </div>
+        <div class="col-md-7">
+          <div style="height:50px;">
+            <rzslider rz-slider-options="gain_slider.options"
+                      rz-slider-model="gain_slider.value">
+            </rzslider>
+          </div>
+
+          <div style="height:50px;">
+            <rzslider rz-slider-options="high_eq_slider.options"
+                      rz-slider-model="high_eq_slider.value">
+            </rzslider>
+          </div>
+
+          <div style="height:50px;">
+            <rzslider rz-slider-options="mid_eq_slider.options"
+                      rz-slider-model="mid_eq_slider.value">
+            </rzslider>
+          </div>
+
+          <div style="height:50px;">
+            <rzslider rz-slider-options="low_eq_slider.options"
+                      rz-slider-model="low_eq_slider.value">
+            </rzslider>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <nvd3 options='barOptions' data='graphData' config="barConfig"></nvd3>
+        </div>
+        <div class="col-md-4">
+          <canvas id="analyser_canvas"></canvas>
+        </div>
+      </div>
+      <!--<div class="row">-->
+        <!--<div class="col-md-8">-->
+          <!--<canvas id="analyser_canvas"></canvas>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<pre>{{graphData | json }}</pre>-->
+    </div>
+
+  </div>
+
+
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script type="text/javascript" src="js/jwplayer/jwplayer.js"></script>
+  <script>jwplayer.key="OJ/VHOAdONYEQAfWnYEWalssfe8Og7bBgK5D/w==";</script>
+  <script src="bower_components/ng-jwplayer/jwplayer.js"></script>
+  <script src="app.js"></script>
+
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/nvd3/build/nv.d3.js"></script> <!-- or use another assembly -->
+  <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+  <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css">
+
+
+  <link rel="stylesheet" type="text/css" href="bower_components/angularjs-slider/dist/rzslider.css"/>
+  <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
+  <!-- Remplace xxxxxxxxx with your license code given by JWPLayer -->
+  <!--<script src="https://content.jwplatform.com/libraries/xxxxxxxxxxxx.js"></script>-->
+
+  <!--<script type="text/javascript" src="jwplayer.min.js"></script>-->
+
+</body>
+</html>
