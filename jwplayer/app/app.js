@@ -145,7 +145,7 @@ myApp.controller('mainController', ['$scope', '$log', '$sce', 'jwplayerService',
         }];
 
 
-        $scope.file1 = $sce.trustAsResourceUrl('https://s3.amazonaws.com/hlm-vms-dev/gdrive/5187_Family_Dollar_RLL_Tide_Fabric_Studio_3_5_4_16_2016_05_04_0_1.mp4');
+        $scope.file1 = $sce.trustAsResourceUrl('https://s3.amazonaws.com/hlm-vms-dev/videos/4309_Demo_Human_SRT.mp4');
 
         $scope.$on('ng-jwplayer-ready', function(event, args) {
 
@@ -378,7 +378,7 @@ myApp.controller('mainController', ['$scope', '$log', '$sce', 'jwplayerService',
             if (typeof username == 'undefined') {
                 username = null;
             }
-            var url = 'https://s3.amazonaws.com/hlm-vms-dev/gdrive/5187_Family_Dollar_RLL_Tide_Fabric_Studio_3_5_4_16_2016_05_04_0_1.json';
+            var url = 'https://s3.amazonaws.com/hlm-vms-dev/videos/4309_Demo_Human_SRT.json';
             return $http.get(url, {});
         };
 
